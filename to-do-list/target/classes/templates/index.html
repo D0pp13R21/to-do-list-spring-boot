@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="">
+<head>
+    <title>To-do List</title>
+</head>
+<body>
+<h1>To-do List</h1>
+<form method="post" action="/tasks">
+    <input type="text" name="title" placeholder="Nova tarefa">
+    <button type="submit">Adicionar</button>
+</form>
+<ul>
+    <th:block th:each="task : ${tasks}">
+        <li th:classappend="${task.completed ? 'completed' : ''}">
+            <form method="post" action="/tasks/{id}/complete" style="display: inline-block;">
+                <input type="hidden" name="_method" value="post">
+                <input type="hidden" name="id" th:value="${task.id}">
+                <button type="submit">Concluir</button>
+            </form>
+            <span th:text="${task.title}"></span>
+            <form method="post" action="/tasks/{id}/delete" style="display: inline-block;">
+                <input type="hidden" name="_method" value="post">
+                <input type="hidden" name="id" th:value="${task.id}">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    </th:block>
+</ul>
+</body>
+</html>
