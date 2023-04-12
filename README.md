@@ -1,2 +1,2 @@
 # to-do-list-spring-boot
-A resolução do desafio do nodulo de spring boot da dio
+A resolução do desafio do modulo de spring boot da dio
